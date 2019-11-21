@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -17,10 +17,28 @@
             android:layout_height="wrap_content"
             android:text="Hello World!" />
 
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="424dp"
-            android:layout_height="353dp" />
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="133dp">
+
+                </ListView>
+            </LinearLayout>
+        </ScrollView>
 
         <TextView
             android:id="@+id/textView2"
