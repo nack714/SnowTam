@@ -4,37 +4,40 @@ import java.io.Serializable;
 
 public class Airport implements Serializable {
 
-    private String userName;
-    private String userType;
+    private String code_IATA,code_OACI, nom;
 
     private boolean active;
 
-    public Airport(String userName, String userType)  {
-        this.userName= userName;
-        this.userType = userType;
-        this.active= true;
+    public Airport(String code_OACI, String code_IATA, String nom)  {
+        this.code_IATA = code_IATA;
+        this.code_OACI = code_OACI;
+        this.nom = nom;
+        this.active= false;
     }
 
-    public Airport(String userName, String userType, boolean active)  {
-        this.userName= userName;
-        this.userType = userType;
-        this.active= active;
+
+    public String getCode_IATA() {
+        return code_IATA;
     }
 
-    public String getUserType() {
-        return userType;
+    public void setCode_IATA(String code_IATA) {
+        this.code_IATA = code_IATA;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public String getCode_OACI() {
+        return code_OACI;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setCode_OACI(String code_OACI) {
+        this.code_OACI = code_OACI;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public boolean isActive() {
@@ -45,9 +48,18 @@ public class Airport implements Serializable {
         this.active = active;
     }
 
+
+    public void changeActive() {
+        if(this.active){
+            this.active = false;
+        }else {
+            this.active = true;
+        }
+    }
+
     @Override
     public String toString() {
-        return this.userName +" ("+ this.userType+")";
+        return this.code_IATA +" ("+ this.nom +")";
     }
 
 }
