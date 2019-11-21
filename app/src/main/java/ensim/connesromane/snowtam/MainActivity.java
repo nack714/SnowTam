@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     EditText lat, lon;
     ListView listView;
-    ArrayList<Airport> airportList;
+    AirportList airportList;
 
 
     @Override
@@ -47,26 +47,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
-                Toast.makeText(MainActivity.this, getListAirport(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, airportList.getActive().toString(), Toast.LENGTH_LONG).show();
             }
         });
 
 
+        airportList = new AirportList();
+        airportList.addAirport(new Airport("TFFR", "PTP", "Pointe-à-Pitre"));
+        airportList.addAirport(new Airport("LFRS", "NTE", "Nantes Atlantique"));
+        airportList.addAirport(new Airport("LFPG", "CDG", "Président français disparu"));
+        airportList.addAirport(new Airport("KJFK", "JFK", "Président américain disparu"));
 
 
-
-
-
-
-
-        airportList = new ArrayList<>();
-        airportList.add(new Airport("PTP", "TFFR", "Pointe-à-Pitre"));
-        airportList.add(new Airport("NTE", "LFRS", "Nantes Atlantique"));
-        airportList.add(new Airport("CDG", "LFPG", "Président français disparu"));
-        airportList.add(new Airport("JFK", "KJFK", "Président américain disparu"));
-
-
-        ArrayAdapter<Airport> arrayAdapter = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList);
+        ArrayAdapter<Airport> arrayAdapter = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
 
         listView = (ListView)findViewById(R.id.listView);
 
@@ -81,21 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 Airport airport = (Airport) o;
                 airport.changeActive();
                 defineColor(v, airport.isActive());
-                Toast.makeText(MainActivity.this, "Selected :" + " " + airport+" ("+airport.isActive()+")", Toast.LENGTH_SHORT).show();
             }
         });
 
 
-    }
-
-    private String getListAirport() {
-        String str = "Airport selected :";
-        for(Airport a :airportList){
-            if(a.isActive()){
-                str += "\n"+a;
-            }
-        }
-        return str;
     }
 
 

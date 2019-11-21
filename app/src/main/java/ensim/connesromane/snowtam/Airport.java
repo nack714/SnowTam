@@ -59,7 +59,7 @@ public class Airport implements Serializable {
 
     @Override
     public String toString() {
-        return this.code_IATA +" ("+ this.nom +")";
+        return this.code_OACI +" - "+ this.nom +" ("+this.code_IATA+")";
     }
 
 }
