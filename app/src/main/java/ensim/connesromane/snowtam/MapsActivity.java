@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -27,7 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String listStr = intent.getStringExtra("listAirportActive");
 
 
-
+        Log.w("list", listStr);
 
         Toast toast = Toast.makeText(this, "liste recue : "+listStr, Toast.LENGTH_SHORT);
         toast.show();
@@ -35,6 +36,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         listAirport = MainActivity.airportList.searchById(listStr);
 
 
+        Log.w("Size", listAirport.getList().size()+"");
 
         toast = Toast.makeText(this, listAirport.getList().size()+"\n"+listAirport.toString(), Toast.LENGTH_LONG);
         toast.show();
