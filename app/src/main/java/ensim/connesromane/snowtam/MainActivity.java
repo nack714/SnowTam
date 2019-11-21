@@ -52,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
         airportList.addAirport(new Airport("LFPG", "CDG", "Président français disparu", "49.003630", "2.516978"));
         airportList.addAirport(new Airport("KJFK", "JFK", "Président américain disparu","40.641311", "-73.778139"));
 
+        airportList.addAirport(new Airport("LFSB", "EAP", "EuroAirport Basel-Mulhouse-Freiburg","47.598165", "7.525486"));
+        airportList.addAirport(new Airport("EGFF", "CWL", "Aéroport de Cardiff","47.598165", "7.525486"));
+        airportList.addAirport(new Airport("EGBB", "BHX", "Aéroport de Birmingham","33.562427", "-86.754126"));
+
+        airportList.addAirport(new Airport("LPPR", "OPO", "Aéroport Francisco Sá-Carneiro","41.242119", "-8.678551"));
+        airportList.addAirport(new Airport("KSFO", "SFO", "Aéroport international de San Francisco","37.621313", "-122.378955"));
+
 
         ArrayAdapter<Airport> arrayAdapter = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
 

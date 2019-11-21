@@ -85,7 +85,7 @@ public class Airport implements Serializable {
     }
 
     public String getTitle() {
-        return "["+code_OACI+"]"+nom;
+        return "["+code_OACI+"] "+nom;
     }
 
     @Override
