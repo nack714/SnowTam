@@ -35,13 +35,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+/*
                 Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                 intent.putExtra("listAirportActive", airportList.getActive().getId());
                 startActivity(intent);
-
-
                 //Toast.makeText(MainActivity.this, airportList.getActive().toString(), Toast.LENGTH_LONG).show();
+*/
+                Intent intent = new Intent(MainActivity.this, SwipeActivity.class);
+                intent.putExtra("listAirportActive", airportList.getActive().getId());
+                startActivity(intent);
             }
         });
 
@@ -77,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 defineColor(v, airport.isActive());
             }
         });
-
-
     }
 
 
