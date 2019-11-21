@@ -27,10 +27,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         lat = Float.valueOf(intent.getStringExtra("lat"));
         lon = Float.valueOf(intent.getStringExtra("lon"));
 
-        CharSequence text = "Name : "+lat+"\nSurname : "+lon;
-        int duration = Toast.LENGTH_SHORT;
+        String listStr = intent.getStringExtra("listAirportActive");
 
-        Toast toast = Toast.makeText(this, text, duration);
+
+
+
+        Toast toast = Toast.makeText(this, "liste recue : "+listStr, Toast.LENGTH_SHORT);
+        toast.show();
+
+        AirportList listAirport = MainActivity.airportList.searchById(listStr);
+
+
+
+        toast = Toast.makeText(this, listAirport.getList().size()+"\n"+listAirport.toString(), Toast.LENGTH_LONG);
         toast.show();
 
 

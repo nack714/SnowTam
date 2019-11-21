@@ -3,12 +3,13 @@ package ensim.connesromane.snowtam;
 import java.io.Serializable;
 
 public class Airport implements Serializable {
-
+    private static int compt_id = 1;
     private String code_IATA,code_OACI, nom;
-
     private boolean active;
+    private int id;
 
     public Airport(String code_OACI, String code_IATA, String nom)  {
+        this.id = compt_id++;
         this.code_IATA = code_IATA;
         this.code_OACI = code_OACI;
         this.nom = nom;
@@ -48,6 +49,13 @@ public class Airport implements Serializable {
         this.active = active;
     }
 
+    public boolean isId(int id) {
+        if(this.id == id){
+            return true;
+        }
+        return false;
+    }
+
 
     public void changeActive() {
         if(this.active){
@@ -59,7 +67,10 @@ public class Airport implements Serializable {
 
     @Override
     public String toString() {
-        return this.code_OACI +" - "+ this.nom +" ("+this.code_IATA+")";
+        return code_OACI +" - "+ nom +" ("+code_IATA+")";
     }
 
+    public int getId() {
+        return  id;
+    }
 }

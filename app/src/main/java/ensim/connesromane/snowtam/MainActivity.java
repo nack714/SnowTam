@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     EditText lat, lon;
     ListView listView;
-    AirportList airportList;
+    public static AirportList airportList;
 
 
     @Override
@@ -44,10 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                 intent.putExtra("lat",  lat.getText().toString());
                 intent.putExtra("lon", lon.getText().toString());
+                intent.putExtra("listAirportActive", airportList.getActive().getId());
                 startActivity(intent);
 
 
-                Toast.makeText(MainActivity.this, airportList.getActive().toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, airportList.getActive().toString(), Toast.LENGTH_LONG).show();
             }
         });
 

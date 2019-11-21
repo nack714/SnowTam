@@ -1,6 +1,8 @@
 package ensim.connesromane.snowtam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AirportList {
 
@@ -37,7 +39,45 @@ public class AirportList {
         return airportActive;
     }
 
+    public Airport searchById(int id){
+        for(Airport a :airportList){
+            if(a.isId(id)){
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public AirportList searchById(ArrayList<Integer> idList){
+        AirportList airportList = new AirportList();
+        for(Integer id : idList){
+            Airport a = searchById(id);
+            if(a != null){
+                airportList.addAirport(a);
+            }
+        }
+        return airportList;
+    }
+
+    public AirportList searchById(String str){
+        String[] listStr = str.split(";");
+        ArrayList<Integer> listInt = new ArrayList<>();
+        for(int i=0 ; i<listStr.length ; i++ ){
+            listInt.add(Integer.parseInt(listStr[i]));
+        }
+        return searchById(listInt);
+
+    }
+
     public ArrayList<Airport> getList() {
         return airportList;
+    }
+
+    public String getId() {
+    String str = "";
+        for(Airport a :airportList){
+            str += a.getId()+";";
+        }
+        return str;
     }
 }
