@@ -18,15 +18,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    float lat, lon;
+    private AirportList listAirport;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        lat = Float.valueOf(intent.getStringExtra("lat"));
-        lon = Float.valueOf(intent.getStringExtra("lon"));
-
         String listStr = intent.getStringExtra("listAirportActive");
 
 
@@ -35,7 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Toast toast = Toast.makeText(this, "liste recue : "+listStr, Toast.LENGTH_SHORT);
         toast.show();
 
-        AirportList listAirport = MainActivity.airportList.searchById(listStr);
+        listAirport = MainActivity.airportList.searchById(listStr);
 
 
 
@@ -67,11 +64,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
 
+        listAirport.putMarker(mMap);
+
 
         // Add a marker in Sydney and move the camera
-        LatLng marker = new LatLng(lat, lon);
+        /*LatLng marker = new LatLng(lat, lon);
         mMap.addMarker(new MarkerOptions().position(marker).title("Marker sur l'ENSIM"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 16));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 16));*/
     }
 }

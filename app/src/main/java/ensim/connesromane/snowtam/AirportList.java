@@ -1,5 +1,9 @@
 package ensim.connesromane.snowtam;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,8 +20,8 @@ public class AirportList {
         airportList.add(a);
     }
 
-    public void addAirport(String code_OACI, String code_IATA, String nom)  {
-        airportList.add(new Airport(code_OACI, code_IATA, nom));
+    public void addAirport(String code_OACI, String code_IATA, String nom, String lat, String lon)  {
+        airportList.add(new Airport(code_OACI, code_IATA, nom, lat, lon));
     }
 
     @Override
@@ -71,6 +75,14 @@ public class AirportList {
 
     public ArrayList<Airport> getList() {
         return airportList;
+    }
+
+    public void putMarker(GoogleMap mMap){
+
+        for(Airport a : airportList){
+            LatLng marker = new LatLng(Float.parseFloat(a.getLat()), Float.parseFloat(a.getLon()));
+            mMap.addMarker(new MarkerOptions().position(marker).title(a.getTitle()));
+        }
     }
 
     public String getId() {

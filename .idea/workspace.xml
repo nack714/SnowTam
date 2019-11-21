@@ -32,19 +32,19 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="-225">
               <caret column="38" selection-start-column="38" selection-end-column="38" />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+            <state relative-caret-position="480">
+              <caret line="52" column="98" selection-start-line="52" selection-start-column="98" selection-end-line="52" selection-end-column="98" />
               <folding>
                 <element signature="e#2952#2961#0" expanded="true" />
                 <element signature="e#2032#2424#0" expanded="true" />
@@ -54,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/AirportList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+            <state relative-caret-position="286">
+              <caret line="83" column="82" selection-start-line="83" selection-start-column="82" selection-end-line="83" selection-end-column="82" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#155#156#0" expanded="true" />
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/Airport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="15" />
+            <state relative-caret-position="361">
+              <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
               <folding>
                 <element signature="e#425#426#0" expanded="true" />
                 <element signature="e#457#458#0" expanded="true" />
@@ -90,10 +90,20 @@
                 <element signature="e#765#766#0" expanded="true" />
                 <element signature="e#803#804#0" expanded="true" />
                 <element signature="e#833#834#0" expanded="true" />
+                <element signature="e#1048#1049#0" expanded="true" />
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1112#1113#0" expanded="true" />
+                <element signature="e#1142#1143#0" expanded="true" />
+                <element signature="e#1172#1173#0" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
+                <element signature="e#1236#1237#0" expanded="true" />
+                <element signature="e#1266#1267#0" expanded="true" />
                 <element signature="e#866#867#0" expanded="true" />
                 <element signature="e#895#896#0" expanded="true" />
                 <element signature="e#940#941#0" expanded="true" />
                 <element signature="e#976#977#0" expanded="true" />
+                <element signature="e#1718#1719#0" expanded="true" />
+                <element signature="e#1744#1745#0" expanded="true" />
                 <element signature="e#1264#1265#0" expanded="true" />
                 <element signature="e#1340#1341#0" expanded="true" />
                 <element signature="e#1494#1495#0" expanded="true" />
@@ -106,8 +116,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/MapsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
+            <state relative-caret-position="435">
+              <caret line="66" column="26" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -137,13 +147,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/Tweet.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/TweetAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_tweet.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/AirpotList.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/AirportList.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/MapsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/Airport.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/AirportList.java" />
       </list>
     </option>
   </component>
@@ -483,33 +493,17 @@
       <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="-225">
           <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/AirportList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#155#156#0" expanded="true" />
-            <element signature="e#201#202#0" expanded="true" />
-            <element signature="e#246#247#0" expanded="true" />
-            <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#918#919#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        <state relative-caret-position="480">
+          <caret line="52" column="98" selection-start-line="52" selection-start-column="98" selection-end-line="52" selection-end-column="98" />
           <folding>
             <element signature="e#2952#2961#0" expanded="true" />
             <element signature="e#2032#2424#0" expanded="true" />
@@ -518,17 +512,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/MapsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="41" column="71" selection-start-line="41" selection-start-column="71" selection-end-line="41" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/Airport.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="69" column="15" selection-start-line="69" selection-start-column="15" selection-end-line="69" selection-end-column="15" />
+        <state relative-caret-position="361">
+          <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
           <folding>
             <element signature="e#425#426#0" expanded="true" />
             <element signature="e#457#458#0" expanded="true" />
@@ -542,14 +529,47 @@
             <element signature="e#765#766#0" expanded="true" />
             <element signature="e#803#804#0" expanded="true" />
             <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#1048#1049#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1112#1113#0" expanded="true" />
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+            <element signature="e#1236#1237#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
             <element signature="e#866#867#0" expanded="true" />
             <element signature="e#895#896#0" expanded="true" />
             <element signature="e#940#941#0" expanded="true" />
             <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1718#1719#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
             <element signature="e#1264#1265#0" expanded="true" />
             <element signature="e#1340#1341#0" expanded="true" />
             <element signature="e#1494#1495#0" expanded="true" />
             <element signature="e#1520#1521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/MapsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="66" column="26" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ensim/connesromane/snowtam/AirportList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="83" column="82" selection-start-line="83" selection-start-column="82" selection-end-line="83" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#155#156#0" expanded="true" />
+            <element signature="e#201#202#0" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
           </folding>
         </state>
       </provider>

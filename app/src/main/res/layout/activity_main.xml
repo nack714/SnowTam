@@ -34,7 +34,7 @@
                 <ListView
                     android:id="@+id/listView"
                     android:layout_width="match_parent"
-                    android:layout_height="133dp">
+                    android:layout_height="414dp">
 
                 </ListView>
             </LinearLayout>
@@ -45,22 +45,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello World!" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
 
         <Button
             android:id="@+id/button"

@@ -31,19 +31,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        lat = (EditText)findViewById(R.id.editText);
-        lon = (EditText)findViewById(R.id.editText2);
-        lat.setText("48.018851");
-        lon.setText("0.157715");
-
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-                intent.putExtra("lat",  lat.getText().toString());
-                intent.putExtra("lon", lon.getText().toString());
                 intent.putExtra("listAirportActive", airportList.getActive().getId());
                 startActivity(intent);
 
@@ -54,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         airportList = new AirportList();
-        airportList.addAirport(new Airport("TFFR", "PTP", "Pointe-à-Pitre"));
-        airportList.addAirport(new Airport("LFRS", "NTE", "Nantes Atlantique"));
-        airportList.addAirport(new Airport("LFPG", "CDG", "Président français disparu"));
-        airportList.addAirport(new Airport("KJFK", "JFK", "Président américain disparu"));
+        airportList.addAirport(new Airport("TFFR", "PTP", "Pointe-à-Pitre", "16.267613", "-61.527249"));
+        airportList.addAirport(new Airport("LFRS", "NTE", "Nantes Atlantique", "47.157419", "-1.606232"));
+        airportList.addAirport(new Airport("LFPG", "CDG", "Président français disparu", "49.003630", "2.516978"));
+        airportList.addAirport(new Airport("KJFK", "JFK", "Président américain disparu","40.641311", "-73.778139"));
 
 
         ArrayAdapter<Airport> arrayAdapter = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
