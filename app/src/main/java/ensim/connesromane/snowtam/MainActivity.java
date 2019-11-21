@@ -41,9 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 //Toast.makeText(MainActivity.this, airportList.getActive().toString(), Toast.LENGTH_LONG).show();
 */
-                Intent intent = new Intent(MainActivity.this, SwipeActivity.class);
-                intent.putExtra("listAirportActive", airportList.getActive().getId());
-                startActivity(intent);
+
+                if(airportList.getActive().getList().size() > 0){
+                    Intent intent = new Intent(MainActivity.this, SwipeActivity.class);
+                    intent.putExtra("listAirportActive", airportList.getActive().getId());
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(MainActivity.this, "ajouter un airport", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -64,22 +69,21 @@ public class MainActivity extends AppCompatActivity {
         airportList.addAirport(new Airport("ENGM", "OSL", "Aéroport international d'Oslo-Gardermoen","60.197550", "11.100415"));
 
         ArrayAdapter<Airport> arrayAdapter = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
-
+        Log.w("ok", "ok");
         listView = (ListView)findViewById(R.id.listView);
+        Log.w("ok", "ok");
 
         listView.setAdapter(arrayAdapter);
+        Log.w("ok", "ok");
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                    Log.w("CLICK LIST", "view : "+v);
-                    Log.w("CLICK LIST", "position : "+position);
-                    Log.w("CLICK LIST", "id : "+id);
+
                 Object o = listView.getItemAtPosition(position);
                 Airport airport = (Airport) o;
-                    Log.w("CLICK LIST", "airport : "+airport);
                 airport.changeActive();
                 defineColor(v, airport.isActive());
             }
