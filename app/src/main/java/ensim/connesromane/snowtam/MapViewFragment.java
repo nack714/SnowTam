@@ -46,15 +46,12 @@ public class MapViewFragment extends Fragment {
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
 
-                // For showing a move to my location button
-//                googleMap.setMyLocationEnabled(true);
-
-                // For dropping a marker at a point on the Map
                 LatLng sydney = new LatLng(Float.parseFloat(airport.getLat()), Float.parseFloat(airport.getLon()));
                 googleMap.addMarker(new MarkerOptions().position(sydney).title(airport.getTitle()).snippet("Marker Description"));
 
-                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                // For zooming automatically to the location of the marker
+                // Decommenter pour afficher la vue satellite
+                // mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(14).build();
                 googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
