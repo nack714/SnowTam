@@ -1,5 +1,7 @@
 package ensim.connesromane.snowtam;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -64,6 +66,7 @@ public class AirportList {
     }
 
     public AirportList searchById(String str){
+        Log.w("String init searchById", str);
         String[] listStr = str.split(";");
         ArrayList<Integer> listInt = new ArrayList<>();
         for(int i=0 ; i<listStr.length ; i++ ){

@@ -36,6 +36,19 @@ public class SwipeActivity extends AppCompatActivity {
         final TextView airportName = this.findViewById(R.id.textAirportName);
         final TextView airportData = this.findViewById(R.id.textAirportData);
 
+        airportName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.w("index", "" + index);
+                Intent intent = new Intent(SwipeActivity.this, AirportInformationActivity.class);
+                intent.putExtra("airportSelected", snowtams.getList().get(index).getId()+"");
+                Log.w("id send", snowtams.getList().get(index).getId() + "");
+                startActivity(intent);
+
+            }
+
+        });
+
         final View view = this.findViewById(R.id.view);
 
         this.updateTextViews(airportName, airportData);
