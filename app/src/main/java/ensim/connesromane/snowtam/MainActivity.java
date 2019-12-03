@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    EditText lat, lon;
     ListView listView;
     public static AirportList airportList;
     ArrayAdapter<Airport> arrayAdapterVisible,arrayAdapterFull;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         initAirport();
 
-
+//SearchView
         SearchView searchView = (SearchView) findViewById(R.id.searchView);
 
         CharSequence query = searchView.getQuery(); // get the query string currently in the text field
@@ -65,11 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+
+//Button
         Button button = (Button)findViewById(R.id.button);
+      //  button.setText(R.string.MAIN_ACTIVITY_button_validate);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(airportList.getActive().getList().size() > 0){
                     Intent intent = new Intent(MainActivity.this, SwipeActivity.class);
                     intent.putExtra("listAirportActive", airportList.getActive().getId());
@@ -81,27 +83,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
+//ListView
         arrayAdapterFull = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
         arrayAdapterVisible = arrayAdapterFull;
-        Log.w("ok", "ok");
         listView = (ListView)findViewById(R.id.listView);
-        Log.w("ok", "ok");
-
         listView.setAdapter(arrayAdapterVisible);
-        Log.w("ok", "ok");
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
 
                 Object o = listView.getItemAtPosition(position);
                 Airport airport = (Airport) o;
                 airport.changeActive();
-
                 listView.invalidateViews();
             }
         });
