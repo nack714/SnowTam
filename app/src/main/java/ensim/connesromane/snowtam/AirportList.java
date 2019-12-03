@@ -95,4 +95,16 @@ public class AirportList {
         }
         return str;
     }
+
+    public AirportList search(String str){
+        AirportList returnList = new AirportList();
+
+        for(Airport a : airportList){
+            if(a.getCode_IATA().contains(str) || a.getCode_OACI().contains(str) || a.getTitle().contains(str) ){
+                returnList.addAirport(a);
+            }
+        }
+
+        return  returnList;
+    }
 }

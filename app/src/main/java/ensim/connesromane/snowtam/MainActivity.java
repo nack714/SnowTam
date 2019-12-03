@@ -3,6 +3,7 @@ package ensim.connesromane.snowtam;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.LauncherActivity;
+import android.app.SearchableInfo;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText lat, lon;
     ListView listView;
     public static AirportList airportList;
-
+    ArrayAdapter<Airport> arrayAdapterVisible,arrayAdapterFull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +33,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        initAirport();
+
+
+        SearchView searchView = (SearchView) findViewById(R.id.searchView);
+
+        CharSequence query = searchView.getQuery(); // get the query string currently in the text field
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.w("Search submit : ", query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(newText.length()>0) {
+                    Log.w("Search tap : ", newText);
+                    AirportList searchList = airportList.search(newText);
+                    arrayAdapterVisible = new ArrayAdapter<Airport>(MainActivity.this, android.R.layout.simple_list_item_1 , searchList.getList());
+
+                    listView.setAdapter(arrayAdapterVisible);
+                }else{
+                    Log.w("Search tap : ", "empty");
+                    arrayAdapterVisible = arrayAdapterFull;
+
+                    listView.setAdapter(arrayAdapterVisible);
+                }
+                return false;
+            }
+
+        });
+
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-/*
-                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-                intent.putExtra("listAirportActive", airportList.getActive().getId());
-                startActivity(intent);
-                //Toast.makeText(MainActivity.this, airportList.getActive().toString(), Toast.LENGTH_LONG).show();
-*/
 
                 if(airportList.getActive().getList().size() > 0){
                     Intent intent = new Intent(MainActivity.this, SwipeActivity.class);
@@ -51,6 +79,35 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+        arrayAdapterFull = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
+        arrayAdapterVisible = arrayAdapterFull;
+        Log.w("ok", "ok");
+        listView = (ListView)findViewById(R.id.listView);
+        Log.w("ok", "ok");
+
+        listView.setAdapter(arrayAdapterVisible);
+        Log.w("ok", "ok");
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+
+                Object o = listView.getItemAtPosition(position);
+                Airport airport = (Airport) o;
+                airport.changeActive();
+
+                listView.invalidateViews();
+            }
+        });
+    }
+
+    private void initAirport() {
 
 
         airportList = new AirportList();
@@ -68,35 +125,8 @@ public class MainActivity extends AppCompatActivity {
         airportList.addAirport(new Airport("ESTA", "AGH", "Aéroport d'Ängelholm–Helsingborg","56.287315", "12.868031"));
         airportList.addAirport(new Airport("ENGM", "OSL", "Aéroport international d'Oslo-Gardermoen","60.197550", "11.100415"));
 
-        ArrayAdapter<Airport> arrayAdapter = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
-        Log.w("ok", "ok");
-        listView = (ListView)findViewById(R.id.listView);
-        Log.w("ok", "ok");
-
-        listView.setAdapter(arrayAdapter);
-        Log.w("ok", "ok");
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-
-                Object o = listView.getItemAtPosition(position);
-                Airport airport = (Airport) o;
-                airport.changeActive();
-                defineColor(v, airport.isActive());
-            }
-        });
     }
 
 
-    private void defineColor(View v, Boolean b){
-        if(b){
-            v.setBackgroundColor(Color.GREEN);
-        }else{
-            v.setBackgroundColor(Color.WHITE);
-        }
-    }
 
 }

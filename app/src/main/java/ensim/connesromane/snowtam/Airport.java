@@ -89,7 +89,11 @@ public class Airport {
 
     @Override
     public String toString() {
-        return code_OACI +" - "+ nom +" ("+code_IATA+")";
+        String ret = "";
+        if(isActive()){
+            ret = "✅";
+        }
+        return ret +" "+code_OACI +" - "+ nom +" ("+code_IATA+")";
     }
 
     public int getId() {
