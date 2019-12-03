@@ -97,7 +97,8 @@ public class SwipeActivity extends AppCompatActivity {
         SnowTam snowTam = port.getSnowTam();
         name.setText(port.getNom());
         //data.setText("Latitude : " + port.getLat() + ", Longitude : " + port.getLon());
-        data.setText(snowTam.toString());
+        //data.setText(snowTam.toString());
+        data.setText(snowTam.getDecodedInfo());
 
         for(RadioButton radio : this.indicators){
             radio.setChecked(false);

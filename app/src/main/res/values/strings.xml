@@ -5,5 +5,9 @@
 
     <string name="MAIN_ACTIVITY_button_validate">Validate</string>
     <string name="MAIN_ACTIVITY_button_empty">Please select an airport</string>
+    <string name="SNOWTAM_at">at</string>
+    <string name="SNOWTAM_all_runaway">All runaways</string>
+    <string name="SNOWTAM_left_runaway">Left runaway #</string>
+    <string name="SNOWTAM_right_runaway">Right runaway #</string>
 
 </resources>
