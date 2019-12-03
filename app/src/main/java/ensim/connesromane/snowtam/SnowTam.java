@@ -1,8 +1,6 @@
 package ensim.connesromane.snowtam;
 
-import android.os.Handler;
 import android.os.StrictMode;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public final class SnowTam {
@@ -18,10 +17,11 @@ public final class SnowTam {
     //private static final String CLE_DE_FLORIAN = "c7fbfa50-1027-11ea-8814-bd9683aba036";
     public static final String PERSO$UNIV = "http://perso.univ-lemans.fr/~i152300/snowtam";
 
-    private String[] fields;
+    private String[] raw_fields;
+    private HashMap<String, String> decoded_fields = new HashMap<>();
 
     private SnowTam(String... strings) {
-        this.fields = strings;
+        this.raw_fields = strings;
     }
 
     public static SnowTam createSnowTamFromURL(final String url){
@@ -58,11 +58,24 @@ public final class SnowTam {
     public String toString() {
         String s = "SnowTam :{\n";
 
-        for (String string : this.fields) {
-            s += string;
+        for (String string : this.raw_fields) {
+            s += string + "\n";
         }
 
-        return s += "}\n";
+        return s += "\n}";
+    }
+
+    private void decode() {
+        for(String rawLine : this.raw_fields) {
+            if(rawLine.contains("A) ")) {
+                String name = rawLine.substring(3,7);
+                this.decoded_fields.put("name", name);
+            }
+
+            if(rawLine.contains("B) ")) {
+                this.decoded_fields.put("date", rawLine.substring(3, 11));
+            }
+        }
     }
 }
 
