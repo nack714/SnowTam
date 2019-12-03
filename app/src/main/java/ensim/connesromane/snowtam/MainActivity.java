@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("listAirportActive", airportList.getActive().getId());
                     startActivity(intent);
                 }else{
-                    Toast.makeText(MainActivity.this, "ajouter un airport", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.MAIN_ACTIVITY_button_empty, Toast.LENGTH_LONG).show();
                 }
             }
         });

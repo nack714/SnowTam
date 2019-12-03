@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="MAIN_ACTIVITY_button_validate">Valider</string>
+    <string name="MAIN_ACTIVITY_button_empty">Veuillez selectionner au moins un aéroport</string>
+
+
+</resources>

@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">SnowTam</string>
 
-    <string name="title_activity_splash_screen">SplashScreen</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="MAIN_ACTIVITY_button_validate">Valider</string>
+
+
+    <string name="MAIN_ACTIVITY_button_validate">Validate</string>
+    <string name="MAIN_ACTIVITY_button_empty">Please select an airport</string>
 
 </resources>
