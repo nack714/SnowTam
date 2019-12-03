@@ -15,7 +15,8 @@ import java.util.List;
 public final class SnowTam {
 
     //private static final String CLE_DE_FLORIAN = "c7fbfa50-1027-11ea-8814-bd9683aba036";
-    public static final String PERSO$UNIV = "http://perso.univ-lemans.fr/~i152300/snowtam";
+   // public static final String PERSO$UNIV = "http://perso.univ-lemans.fr/~i152300/snowtam";
+    public static final String PERSO$UNIV = "http://192.168.43.19/snowtam";
 
     private String[] raw_fields;
     private HashMap<String, String> decoded_fields = new HashMap<>();

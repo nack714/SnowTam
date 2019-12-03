@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(airportList.getActive().getList().size() > 0){
-                    Intent intent = new Intent(MainActivity.this, SwipeActivity.class);
+                    //Intent intent = new Intent(MainActivity.this, SwipeActivity.class);
+                    Intent intent = new Intent(MainActivity.this, AirportInformationActivity.class);
                     intent.putExtra("listAirportActive", airportList.getActive().getId());
                     startActivity(intent);
                 }else{

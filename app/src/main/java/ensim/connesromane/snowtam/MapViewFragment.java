@@ -41,23 +41,42 @@ public class MapViewFragment extends Fragment {
             e.printStackTrace();
         }
 
+
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
 
-                LatLng sydney = new LatLng(Float.parseFloat(airport.getLat()), Float.parseFloat(airport.getLon()));
-                googleMap.addMarker(new MarkerOptions().position(sydney).title(airport.getTitle()).snippet("Marker Description"));
 
-                // Decommenter pour afficher la vue satellite
-                // mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                // De/commenter pour afficher la vue satellite
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(14).build();
-                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                mapInit();
+
             }
         });
 
+
+
         return rootView;
+    }
+
+    public void setAirport(Airport a){
+        this.airport = a;
+        mapInit();
+    }
+
+    public void mapInit() {
+        try {
+
+            LatLng sydney = new LatLng(Float.parseFloat(airport.getLat()), Float.parseFloat(airport.getLon()));
+            googleMap.addMarker(new MarkerOptions().position(sydney).title(airport.getTitle()).snippet(""));
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(14).build();
+            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        }catch (Exception e){
+
+        }
     }
 
     @Override
