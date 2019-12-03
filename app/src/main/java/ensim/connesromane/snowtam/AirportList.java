@@ -100,7 +100,7 @@ public class AirportList {
         AirportList returnList = new AirportList();
 
         for(Airport a : airportList){
-            if(a.getCode_IATA().contains(str) || a.getCode_OACI().contains(str) || a.getTitle().contains(str) ){
+            if(a.getCode_IATA().toLowerCase().contains(str.toLowerCase()) || a.getCode_OACI().toLowerCase().contains(str.toLowerCase()) || a.getTitle().toLowerCase().contains(str.toLowerCase()) ){
                 returnList.addAirport(a);
             }
         }

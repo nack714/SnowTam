@@ -11,10 +11,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/MAIN_ACTIVITY_button_validate"/>
+
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -23,23 +29,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ListView
                     android:id="@+id/listView"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp">
+                    android:layout_height="550dp">
 
                 </ListView>
             </LinearLayout>
         </ScrollView>
 
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/MAIN_ACTIVITY_button_validate"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
