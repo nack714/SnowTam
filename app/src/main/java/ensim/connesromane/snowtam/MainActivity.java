@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
 //Button
         Button button = (Button)findViewById(R.id.button);
-      //  button.setText(R.string.MAIN_ACTIVITY_button_validate);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

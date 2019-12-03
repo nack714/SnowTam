@@ -91,7 +91,7 @@ public class Airport {
     public String toString() {
         String ret = "";
         if(isActive()){
-            ret = "✅";
+            ret = "✔️";
         }
         return ret +" "+code_OACI +" - "+ nom +" ("+code_IATA+")";
     }
