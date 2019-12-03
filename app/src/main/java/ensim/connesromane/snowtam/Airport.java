@@ -1,13 +1,12 @@
 package ensim.connesromane.snowtam;
 
-import java.io.Serializable;
-
-public class Airport implements Serializable {
+public class Airport {
     private static int compt_id = 1;
     private String code_IATA,code_OACI, nom;
     private boolean active;
     private int id;
     private String lat, lon;
+    private SnowTam snowTam;
 
     public Airport(String code_OACI, String code_IATA, String nom, String lat, String lon)  {
         this.id = compt_id++;
@@ -95,5 +94,13 @@ public class Airport implements Serializable {
 
     public int getId() {
         return  id;
+    }
+
+    public SnowTam getSnowTam() {
+        return this.snowTam;
+    }
+
+    public void setSnowTam(SnowTam snowTam) {
+        this.snowTam = snowTam;
     }
 }

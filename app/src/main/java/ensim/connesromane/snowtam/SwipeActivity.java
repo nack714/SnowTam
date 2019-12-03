@@ -4,15 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +17,7 @@ import java.util.List;
 
 public class SwipeActivity extends AppCompatActivity {
 
-    AirportList snowtams;
+    AirportList airportList;
     List<RadioButton> indicators = new ArrayList<>();
     int index = 0;
 
@@ -30,7 +26,7 @@ public class SwipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe);
 
-        this.initSnowTams();
+        this.initAirports();
         this.initRadios();
 
         final TextView airportName = this.findViewById(R.id.textAirportName);
@@ -41,8 +37,8 @@ public class SwipeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.w("index", "" + index);
                 Intent intent = new Intent(SwipeActivity.this, AirportInformationActivity.class);
-                intent.putExtra("airportSelected", snowtams.getList().get(index).getId()+"");
-                Log.w("id send", snowtams.getList().get(index).getId() + "");
+                intent.putExtra("airportSelected", airportList.getList().get(index).getId()+"");
+                Log.w("id send", airportList.getList().get(index).getId() + "");
                 startActivity(intent);
 
             }
@@ -72,15 +68,21 @@ public class SwipeActivity extends AppCompatActivity {
         });
     }
 
-    private void initSnowTams() {
+    private void initAirports() {
         Intent intent = this.getIntent();
         String rawAirports = intent.getStringExtra("listAirportActive");
-        this.snowtams = MainActivity.airportList.searchById(rawAirports);
 
+        if(rawAirports != null) {
+            this.airportList = MainActivity.airportList.searchById(rawAirports);
+
+            for(Airport airport : this.airportList.getList()) {
+                airport.setSnowTam(SnowTam.createSnowTamFromURL(SnowTam.PERSO$UNIV));
+            }
+        }
     }
 
     private void incrementIndex(TextView name, TextView data){
-        this.index += this.index == this.snowtams.getList().size()-1 ? 0 : 1;
+        this.index += this.index == this.airportList.getList().size()-1 ? 0 : 1;
         this.updateTextViews(name, data);
     }
 
@@ -91,9 +93,11 @@ public class SwipeActivity extends AppCompatActivity {
 
     private void updateTextViews(TextView name, TextView data){
 
-        Airport port = this.snowtams.getList().get(index);
+        Airport port = this.airportList.getList().get(index);
+        SnowTam snowTam = port.getSnowTam();
         name.setText(port.getNom());
-        data.setText("Latitude : " + port.getLat() + ", Longitude : " + port.getLon());
+        //data.setText("Latitude : " + port.getLat() + ", Longitude : " + port.getLon());
+        data.setText(snowTam.toString());
 
         for(RadioButton radio : this.indicators){
             radio.setChecked(false);
@@ -105,7 +109,7 @@ public class SwipeActivity extends AppCompatActivity {
     private void initRadios() {
         LinearLayout layout = this.findViewById(R.id.layoutRadio);
 
-        for(int i=0;i<this.snowtams.getList().size();i++){
+        for(int i = 0; i<this.airportList.getList().size(); i++){
 
             RadioButton radio = new RadioButton(this);
             radio.setEnabled(false);
