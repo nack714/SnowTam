@@ -1,6 +1,5 @@
 package ensim.connesromane.snowtam;
 
-import android.util.Log;
 
 public class Decoder {
 
@@ -10,14 +9,24 @@ public class Decoder {
         String hour = raw.substring(4, 6);
         String minute = raw.substring(6, 8);
 
-//        return day + "/" + month + " " + SwipeActivity.getTranslation(R.string.SNOWTAM_at) + " " + hour + "h" + minute + " UTC";
         return day + "/" + month + " " + "at" + " " + hour + "h" + minute + " UTC";
     }
 
     public static String decodedRunway(String raw) {
-        int runway = Integer.parseInt(raw);
-        //return runaway == 88 ? SwipeActivity.getTranslation(R.string.SNOWTAM_all_runaway) : ((runaway % 50 == runaway ? SwipeActivity.getTranslation(R.string.SNOWTAM_left_runaway) : SwipeActivity.getTranslation(R.string.SNOWTAM_right_runaway)) + (runaway % 50));
-        return runway == 88 ? "All runways" : ((runway % 50 == runway ? "Left runway " : "Right runway ") + (runway % 50));
+
+        if(raw.endsWith("L")) {
+            return "Left runway " + Integer.parseInt(raw.substring(0, raw.length()-2));
+        }
+
+        else if(raw.endsWith("R")) {
+            return "Right runway " + Integer.parseInt(raw.substring(0, raw.length()-2));
+        }
+
+        else {
+            int runway = Integer.parseInt(raw);
+            return runway == 88 ? "All runways" : ((runway % 50 == runway ? "Left runway " : "Right runway ") + (runway % 50));
+        }
+
     }
 
     public static String decodedCoveredRunwayLength(String raw){
@@ -48,7 +57,7 @@ public class Decoder {
             case 2:
                 return "Roll out : ";
             default:
-                return "iieeeet ?!";
+                return "[ERROR] Unknown runway part : ";
         }
     }
 
@@ -76,7 +85,7 @@ public class Decoder {
             case 9:
                 return "Frozen ruts or ridges";
             default:
-                return "iieeeeet";
+                return "[ERROR] Unknown condition";
         }
     }
 
@@ -99,10 +108,31 @@ public class Decoder {
 
         String result = "Friction measurements :\n";
 
-        for(int i=0;i<3;i++) {
-            result += "\t" + runwayPart(i) + (frictions[i].equals("XX") ? "Missing value" : (frictions[i])) + "\n";
+        for(int i=0;i<frictions.length;i++) {
+            result += "\t" + runwayPart(i) + (frictions[i].equals("XX") ? "Missing value" : (friction(frictions[i]))) + "\n";
         }
 
         return result + (infos.length > 1 ? infos[1] : "Unknown measurement device");
+    }
+
+    private static String friction(String friction) {
+
+        if(friction.length() == 1) {
+/*
+            switch (Integer.parseInt(friction)){
+
+                case 0:
+
+            }*/
+            return  friction;
+        }
+
+        else {
+            return friction;
+        }
+    }
+
+    public static String decodedTaxiway(String raw) {
+        return "";
     }
 }

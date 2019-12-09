@@ -15,7 +15,7 @@ import java.util.List;
 public class SnowTam {
 
 
-    private String oaci;
+    protected String oaci;
     private String[] raw_fields;
     private List<String> decoded_fields = new ArrayList<>();
 
@@ -110,7 +110,7 @@ public class SnowTam {
 
         @Override
         public String getDecodedInfo() {
-            return "Cannot access to website";
+            return this.oaci + "\nNo snowtam aviable.";
         }
     }
 }
