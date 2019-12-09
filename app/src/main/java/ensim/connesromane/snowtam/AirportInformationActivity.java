@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -71,7 +72,7 @@ public class AirportInformationActivity extends AppCompatActivity {
 
         final TextView airportName = this.findViewById(R.id.text_frag1);
         final TextView airportData = this.findViewById(R.id.text_frag2);
-
+/*
         airportData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +86,43 @@ public class AirportInformationActivity extends AppCompatActivity {
                     decode[index] = true;
                     airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).toString());
                 }
+            }
+        });
+*/
+        airportData.setOnTouchListener(new OnSwipeTouchListener(AirportInformationActivity.this) {
+            public void onSwipeTop() {
+                //Toast.makeText(AirportInformationActivity.this, "top", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeRight() {
+                //Toast.makeText(AirportInformationActivity.this, "right", Toast.LENGTH_SHORT).show();
+                decrementIndex(airportName, airportData);
+            }
+            public void onSwipeLeft() {
+                //Toast.makeText(AirportInformationActivity.this, "left", Toast.LENGTH_SHORT).show();
+                incrementIndex(airportName, airportData);
+
+            }
+            public void onSwipeBottom() {
+                //Toast.makeText(AirportInformationActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+            }
+
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                try {
+                    Thread.sleep(100);
+                }catch (Exception e){
+
+                }
+                if(decode[index]){
+                    decode[index] = false;
+
+                    airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).getDecodedInfo());
+                }else {
+                    decode[index] = true;
+                    airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).toString());
+                }
+                return super.onTouch(v, event);
             }
         });
 
