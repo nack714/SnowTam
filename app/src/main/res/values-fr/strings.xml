@@ -3,6 +3,7 @@
 <resources>
 
     <string name="MAIN_ACTIVITY_button_validate">Valider</string>
+    <string name="MAIN_ACTIVITY_too_much_airport">Veuillez selectionner moins de 10 aéroports</string>
     <string name="MAIN_ACTIVITY_button_empty">Veuillez sélectionner au moins un aéroport</string>
     <string name="SNOWTAM_at">à</string>
     <string name="SNOWTAM_all_runaway">Toutes les pistes</string>

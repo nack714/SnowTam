@@ -107,4 +107,23 @@ public class AirportList {
 
         return  returnList;
     }
+
+    public int nbActive(){
+        int nb=0;
+        for(Airport a : airportList){
+            if (a.isActive()){
+                nb++;
+            }
+        }
+        return  nb;
+    }
+
+    public String getOACI(){
+        String str ="";
+        for(Airport a : airportList){
+            str += a.getCode_OACI()+",";
+        }
+        return str;
+
+    }
 }

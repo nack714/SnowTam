@@ -143,7 +143,11 @@ public class AirportInformationActivity extends AppCompatActivity {
         SnowTam snowTam = port.getSnowTam();
         name.setText(port.getNom());
         //data.setText("Latitude : " + port.getLat() + ", Longitude : " + port.getLon());
-        data.setText(snowTam.toString());
+        if(snowTam == null){
+            data.setText("nothing to show");
+        }else{
+            data.setText(snowTam.toString());
+        }
 
         for(RadioButton radio : this.indicators){
             radio.setChecked(false);

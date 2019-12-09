@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("listAirportActive", airportList.getActive().getId());
                     startActivity(intent);
                 }else{
-                    Toast.makeText(MainActivity.this, R.string.MAIN_ACTIVITY_button_empty, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, R.string.MAIN_ACTIVITY_button_empty, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -96,10 +96,19 @@ public class MainActivity extends AppCompatActivity {
 
                 Object o = listView.getItemAtPosition(position);
                 Airport airport = (Airport) o;
-                airport.changeActive();
+                activeAirport(airport);
                 listView.invalidateViews();
             }
         });
+    }
+
+    private void activeAirport(Airport airport) {
+        if(airportList.nbActive()>=10 && !airport.isActive()){
+            Toast.makeText(MainActivity.this, R.string.MAIN_ACTIVITY_too_much_airport, Toast.LENGTH_SHORT).show();
+        }else {
+            airport.changeActive();
+        }
+
     }
 
     private void initAirport() {

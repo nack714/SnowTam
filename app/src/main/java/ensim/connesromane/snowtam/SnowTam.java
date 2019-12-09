@@ -15,9 +15,12 @@ import java.util.List;
 
 public final class SnowTam {
 
-    //private static final String CLE_DE_FLORIAN = "c7fbfa50-1027-11ea-8814-bd9683aba036";
+    private static final String CLE_DE_FLORIAN = "c7fbfa50-1027-11ea-8814-bd9683aba036";
+    //NE pas UTILISER //private static final String CLE_DE_NICOLAS = "0661e7b0-1027-11ea-8814-bd9683aba036";
    // public static final String PERSO$UNIV = "http://perso.univ-lemans.fr/~i152300/snowtam";
-    public static final String PERSO$UNIV = "http://192.168.43.19/snowtam";
+    public static final String URL = "https://v4p4sz5ijk.execute-api.us-east-1.amazonaws.com/anbdata/states/notams/notams-realtime-list?api_key="+CLE_DE_FLORIAN+"&format=json&criticality=&locations=";//ENGM, BGGH
+    //public static final String PERSO$UNIV = "http://192.168.43.19/snowtam";
+    public static final String PERSO$UNIV = URL;
 
     private String[] raw_fields;
     private List<String> decoded_fields = new ArrayList<>();
