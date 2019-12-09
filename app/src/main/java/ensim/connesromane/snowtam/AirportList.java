@@ -126,4 +126,10 @@ public class AirportList {
         return str;
 
     }
+
+
+    public int size(){
+        return airportList.size();
+    }
+
 }

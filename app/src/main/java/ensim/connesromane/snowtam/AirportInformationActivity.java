@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -32,6 +33,7 @@ public class AirportInformationActivity extends AppCompatActivity {
     List<RadioButton> indicators = new ArrayList<>();
     int index = 0;
     MapViewFragment map;
+    Boolean[] decode;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -51,6 +53,12 @@ public class AirportInformationActivity extends AppCompatActivity {
 
         final Fragment first = map;
 
+        decode = new Boolean[airportList.size()];
+
+        for(int i=0;i<airportList.size();i++){
+            decode[i] = false;
+        }
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.layout, first);
@@ -63,6 +71,23 @@ public class AirportInformationActivity extends AppCompatActivity {
 
         final TextView airportName = this.findViewById(R.id.text_frag1);
         final TextView airportData = this.findViewById(R.id.text_frag2);
+
+        airportData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(decode[index]){
+                    //snowTam.getDecodedInfo()
+                    decode[index] = false;
+
+                    airportData.setText("Co\n non");
+                    airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).getDecodedInfo());
+                }else {
+                    decode[index] = true;
+                    airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).toString());
+                }
+            }
+        });
+
 
         LinearLayout rl2 = this.findViewById(R.id.rl2);
 
@@ -147,7 +172,7 @@ public class AirportInformationActivity extends AppCompatActivity {
         }
 
         this.indicators.get(index).setChecked(true);
-        Log.w("airport : ",port.toString());
+        Log.w("Nico airport : ",port.toString());
         map.setAirport(port);
     }
 
@@ -163,5 +188,6 @@ public class AirportInformationActivity extends AppCompatActivity {
             layout.addView(radio);
         }
     }
+
 
 }
