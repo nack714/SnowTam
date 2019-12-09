@@ -28,8 +28,6 @@ public class SnowTamList
 
         String[] listOACI = oacis.split(",");
 
-        Log.e("try", "before");
-
         try {
             java.net.URL website = new URL(URL + oacis);
 
@@ -37,7 +35,6 @@ public class SnowTamList
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-            Log.e("try", "after");
             Boolean[] find = new Boolean[listOACI.length];
             for(int i=0;i<find.length;i++){
                 find[i] = false;

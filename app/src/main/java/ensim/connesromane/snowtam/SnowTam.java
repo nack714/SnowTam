@@ -17,11 +17,13 @@ public class SnowTam {
 
     protected String oaci;
     private String[] raw_fields;
+    private String allRawFields;
     private List<String> decoded_fields = new ArrayList<>();
 
     protected SnowTam(String oaci, String rawFields) {
 
         this.oaci = oaci;
+        this.allRawFields = rawFields;
         this.raw_fields = rawFields.split("\\)");
         this.decode();
     }
@@ -32,13 +34,15 @@ public class SnowTam {
 
     @Override
     public String toString() {
+        /*
         String s = "SnowTam :{\n";
 
         for (String string : this.raw_fields) {
             s += string + "\n";
         }
 
-        return s += "\n}";
+        return s += "\n}";*/
+        return  this.allRawFields;
     }
 
     public String getDecodedInfo() {
@@ -88,7 +92,7 @@ public class SnowTam {
                     break;
                 case 'H':
                     this.decoded_fields.add(Decoder.decodedFriction(line));
-                    break;
+                    return;
             }
 
             prevLine = rawLine;
