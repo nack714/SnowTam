@@ -74,10 +74,10 @@ public class SwipeActivity extends AppCompatActivity {
 
         if(rawAirports != null) {
             this.airportList = MainActivity.airportList.searchById(rawAirports);
-
+/*
             for(Airport airport : this.airportList.getList()) {
                 airport.setSnowTam(SnowTam.createSnowTamFromURL(SnowTam.PERSO$UNIV));
-            }
+            }*/
         }
     }
 

@@ -28,6 +28,7 @@ public class AirportInformationActivity extends AppCompatActivity {
 
 
     AirportList airportList;
+    SnowTamList snowTamList;
     List<RadioButton> indicators = new ArrayList<>();
     int index = 0;
     MapViewFragment map;
@@ -38,17 +39,13 @@ public class AirportInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ariport_info);
 
-
         Intent intent = this.getIntent();
-        /*String rawAirports = intent.getStringExtra("airportSelected");
-        if(rawAirports == null){
-            Log.w("list received","null");
-        }
-        Log.w("list received",rawAirports);
-        airport = MainActivity.airportList.searchById(rawAirports).getList().get(0);*/
 
         this.initAirports();
         airport = airportList.getList().get(0);
+
+        //this.initSnowtams();
+        this.snowTamList = new SnowTamList(airportList.getOACI());
 
         map = new MapViewFragment(airport);
 
@@ -68,8 +65,6 @@ public class AirportInformationActivity extends AppCompatActivity {
         final TextView airportData = this.findViewById(R.id.text_frag2);
 
         LinearLayout rl2 = this.findViewById(R.id.rl2);
-
-        //final View view = this.findViewById(R.id.view2);
 
         this.updateTextViews(airportName, airportData);
 
@@ -120,11 +115,14 @@ public class AirportInformationActivity extends AppCompatActivity {
 
         if(rawAirports != null) {
             this.airportList = MainActivity.airportList.searchById(rawAirports);
-
-            for(Airport airport : this.airportList.getList()) {
-                airport.setSnowTam(SnowTam.createSnowTamFromURL(SnowTam.PERSO$UNIV));
-            }
         }
+
+        Log.e("airportlist : ", this.airportList.toString());
+    }
+
+    private void initSnowtams() {
+
+        this.snowTamList = new SnowTamList(airportList.getOACI());
     }
 
     private void incrementIndex(TextView name, TextView data){
@@ -140,10 +138,8 @@ public class AirportInformationActivity extends AppCompatActivity {
     private void updateTextViews(TextView name, TextView data){
 
         Airport port = this.airportList.getList().get(index);
-        SnowTam snowTam = port.getSnowTam();
+        SnowTam snowTam = this.snowTamList.getList().get(index);
         name.setText(port.getNom());
-        //data.setText("Latitude : " + port.getLat() + ", Longitude : " + port.getLon());
-        //data.setText(snowTam.toString());
         data.setText(snowTam.getDecodedInfo());
 
         for(RadioButton radio : this.indicators){

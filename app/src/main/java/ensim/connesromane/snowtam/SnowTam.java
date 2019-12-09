@@ -14,50 +14,16 @@ import java.util.List;
 
 public class SnowTam {
 
-    private static final String CLE_DE_FLORIAN = "c7fbfa50-1027-11ea-8814-bd9683aba036";
-    //NE pas UTILISER //private static final String CLE_DE_NICOLAS = "0661e7b0-1027-11ea-8814-bd9683aba036";
-   // public static final String PERSO$UNIV = "http://perso.univ-lemans.fr/~i152300/snowtam";
-    public static final String URL = "https://v4p4sz5ijk.execute-api.us-east-1.amazonaws.com/anbdata/states/notams/notams-realtime-list?api_key="+CLE_DE_FLORIAN+"&format=json&criticality=&locations=";//ENGM, BGGH
-    //public static final String PERSO$UNIV = "http://192.168.43.19/snowtam";
-    public static final String PERSO$UNIV = URL;
 
+    private String oaci;
     private String[] raw_fields;
     private List<String> decoded_fields = new ArrayList<>();
 
-    protected SnowTam(String string) {
+    protected SnowTam(String oaci, String rawFields) {
 
-        this.raw_fields = string.split("\\)");
+        this.oaci = oaci;
+        this.raw_fields = rawFields.split("\\)");
         this.decode();
-    }
-
-    public static SnowTam createSnowTamFromURL(final String url){
-
-        StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(threadPolicy);
-
-        try {
-            URL website = new URL(url);
-
-            InputStream in = website.openStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-            String line;
-            while((line = reader.readLine()) != null) {
-
-                if(line.contains("\"all\":") && line.contains("SNOWTAM")) {
-                    String rawData = line.split("\"all\":")[1];
-                    return new SnowTam(rawData.replaceAll("\\\\n", " "));
-                }
-            }
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return new NoSnowTam();
     }
 
     @Override
@@ -136,10 +102,10 @@ public class SnowTam {
        return string.length() <1 ? '0' : string.charAt(string.length()-1);
     }
 
-    private static class NoSnowTam extends SnowTam{
+    public static class NoSnowTam extends SnowTam{
 
-        protected NoSnowTam() {
-            super("");
+        protected NoSnowTam(String oaci) {
+            super(oaci,"");
         }
 
         @Override
