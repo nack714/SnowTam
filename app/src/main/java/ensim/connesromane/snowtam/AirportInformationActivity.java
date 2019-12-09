@@ -142,6 +142,10 @@ public class AirportInformationActivity extends AppCompatActivity {
             public void onSwipeBottom() {
                 //Toast.makeText(AirportInformationActivity.this, "bottom", Toast.LENGTH_SHORT).show();
             }
+
+            public void onClick(){
+                Toast.makeText(AirportInformationActivity.this, "click", Toast.LENGTH_SHORT).show();
+            }
         });
 
 

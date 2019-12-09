@@ -62,6 +62,10 @@ public class Decoder {
     }
 
     private static String conditions(int i) {
+
+        if(i > 9) {
+            return "Top : " + conditions(i/10) + ", Under : " + conditions(i%10);
+        }
         switch(i)
         {
             case 0:
@@ -109,7 +113,7 @@ public class Decoder {
         String result = "Friction measurements :\n";
 
         for(int i=0;i<frictions.length;i++) {
-            result += "\t" + runwayPart(i) + (frictions[i].equals("XX") ? "Missing value" : (friction(frictions[i]))) + "\n";
+            result += "\t" + runwayPart(i) + (friction(frictions[i])) + "\n";
         }
 
         return result + (infos.length > 1 ? infos[1] : "Unknown measurement device");
@@ -117,22 +121,21 @@ public class Decoder {
 
     private static String friction(String friction) {
 
-        if(friction.length() == 1) {
-/*
-            switch (Integer.parseInt(friction)){
-
-                case 0:
-
-            }*/
-            return  friction;
+        if(friction.equals("XX") || friction.equals("9")) {
+            return "Missing value";
         }
 
-        else {
-            return friction;
-        }
-    }
+        int coeff = Integer.parseInt(friction);
 
-    public static String decodedTaxiway(String raw) {
-        return "";
+        if(coeff == 5 || coeff > 40)
+            return "Good";
+        else if(coeff == 4 || coeff <= 39 && coeff >= 36)
+            return "Medium to Good";
+        else if(coeff == 3 || coeff <=35 && coeff >= 30)
+            return "Medium";
+        else if(coeff == 2 || coeff <= 29 && coeff >=26)
+            return "Medium to poor";
+        else
+            return "Poor";
     }
 }

@@ -66,7 +66,7 @@ public class SnowTam {
             switch(this.lastCharofStr(prevLine)){
 
                 default:
-                    Log.e("Parsing snowtam error", "Section " + this.lastCharofStr(prevLine) + " :  prevLine is \"" + prevLine +"\"");
+                    //Log.e("Parsing snowtam error", "Section " + this.lastCharofStr(prevLine) + " :  prevLine is \"" + prevLine +"\"");
                     break;
                 case 'A':
                     this.decoded_fields.add(line);
@@ -89,9 +89,6 @@ public class SnowTam {
                 case 'H':
                     this.decoded_fields.add(Decoder.decodedFriction(line));
                     break;
-                case 'N':
-
-                    break;
             }
 
             prevLine = rawLine;
@@ -110,6 +107,11 @@ public class SnowTam {
 
         protected NoSnowTam(String oaci) {
             super(oaci,"");
+        }
+
+        @Override
+        public String toString() {
+            return this.getDecodedInfo();
         }
 
         @Override
