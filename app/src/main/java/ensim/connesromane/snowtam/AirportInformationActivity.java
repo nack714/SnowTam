@@ -109,11 +109,6 @@ public class AirportInformationActivity extends AppCompatActivity {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                try {
-                    Thread.sleep(100);
-                }catch (Exception e){
-
-                }
                 if(decode[index]){
                     decode[index] = false;
 
@@ -122,7 +117,7 @@ public class AirportInformationActivity extends AppCompatActivity {
                     decode[index] = true;
                     airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).toString());
                 }
-                return super.onTouch(v, event);
+                return false;
             }
         });
 
