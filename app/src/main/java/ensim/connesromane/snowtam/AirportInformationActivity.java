@@ -148,27 +148,7 @@ public class AirportInformationActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private void initAirports() {

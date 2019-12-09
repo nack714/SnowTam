@@ -116,15 +116,16 @@ public class MainActivity extends AppCompatActivity {
 
         airportList = new AirportList();
         airportList.addAirport(new Airport("TFFR", "PTP", "Pointe-à-Pitre", "16.267613", "-61.527249"));
-        airportList.addAirport(new Airport("LFRS", "NTE", "Nantes Atlantique", "47.157419", "-1.606232"));
-        airportList.addAirport(new Airport("LFPG", "CDG", "Président français disparu", "49.003630", "2.516978"));
-        airportList.addAirport(new Airport("KJFK", "JFK", "Président américain disparu","40.641311", "-73.778139"));
-        airportList.addAirport(new Airport("LPPT", "LIS", "Aéroport Humberto Delgado","38.775594", "-9.135367"));
+
+
+        airportList.addAirport(new Airport("ESSA", "ARN", "Aéroport de Stockholm-Arlanda", "59.649762", "17.923781"));
+        airportList.addAirport(new Airport("ESKN", "NYO", "Aéroport de Stockholm-Skavsta", "58.789020", "16.915365"));
+        airportList.addAirport(new Airport("EFHK", "HEL", "Aéroport d'Helsinki-Vantaa","60.321042", "24.952860"));
         airportList.addAirport(new Airport("LFSB", "EAP", "EuroAirport Basel-Mulhouse-Freiburg","47.598165", "7.525486"));
-        airportList.addAirport(new Airport("EGFF", "CWL", "Aéroport de Cardiff","51.398193", "-3.345457"));
-        airportList.addAirport(new Airport("EGBB", "BHX", "Aéroport de Birmingham","52.452382", "-1.743507"));
-        airportList.addAirport(new Airport("LPPR", "OPO", "Aéroport Francisco Sá-Carneiro","41.242119", "-8.678551"));
-        airportList.addAirport(new Airport("KSFO", "SFO", "Aéroport international de San Francisco","37.621313", "-122.378955"));
+        airportList.addAirport(new Airport("EFOU", "OUL", "Aéroport d'Oulu","64.930875", "25.355838"));
+        airportList.addAirport(new Airport("BIGR", "GRY", "Aérodrome de Grímsey","66.547875", "-18.020887"));
+        airportList.addAirport(new Airport("BIRK", "RKV", "Aéroport de Reykjavik","64.132628", "-21.949453"));
+        airportList.addAirport(new Airport("CYQB", "YQB", "Aéroport international Jean-Lesage de Québec","46.790772", "-71.388569"));
         airportList.addAirport(new Airport("BGGH", "GOH", "Aéroport de Nuuk","64.191702", "-51.674193"));
         airportList.addAirport(new Airport("ESTA", "AGH", "Aéroport d'Ängelholm–Helsingborg","56.287315", "12.868031"));
         airportList.addAirport(new Airport("ENGM", "OSL", "Aéroport international d'Oslo-Gardermoen","60.197550", "11.100415"));
