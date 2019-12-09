@@ -10,10 +10,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public final class SnowTam {
+public class SnowTam {
 
     private static final String CLE_DE_FLORIAN = "c7fbfa50-1027-11ea-8814-bd9683aba036";
     //NE pas UTILISER //private static final String CLE_DE_NICOLAS = "0661e7b0-1027-11ea-8814-bd9683aba036";
@@ -25,8 +24,9 @@ public final class SnowTam {
     private String[] raw_fields;
     private List<String> decoded_fields = new ArrayList<>();
 
-    private SnowTam(String... strings) {
-        this.raw_fields = strings;
+    protected SnowTam(String string) {
+
+        this.raw_fields = string.split("\\)");
         this.decode();
     }
 
@@ -46,7 +46,7 @@ public final class SnowTam {
 
                 if(line.contains("\"all\":") && line.contains("SNOWTAM")) {
                     String rawData = line.split("\"all\":")[1];
-                    return new SnowTam(rawData.split("\\\\n"));
+                    return new SnowTam(rawData.replaceAll("\\\\n", " "));
                 }
             }
         }
@@ -57,7 +57,7 @@ public final class SnowTam {
             e.printStackTrace();
         }
 
-        return null;
+        return new NoSnowTam();
     }
 
     @Override
@@ -83,27 +83,68 @@ public final class SnowTam {
 
     private void decode() {
 
+        /**
+         * TODO : elements = str.split(i+"\\) ") avec i allant de A à Z
+         */
+
+        String prevLine = "";
+
         for(String rawLine : this.raw_fields) {
-            if(rawLine.contains("A) ")) {
-                String name = rawLine.split("A\\) ")[1].substring(0,4);
-                this.decoded_fields.add(name);
+
+            String line = this.cleanStr(rawLine);
+
+            switch(this.lastCharofStr(prevLine)){
+
+                default:
+                    Log.e("Parsing snowtam error", "Section " + this.lastCharofStr(prevLine) + " :  prevLine is \"" + prevLine +"\"");
+                    break;
+                case 'A':
+                    this.decoded_fields.add(line);
+                    break;
+                case 'B':
+                    this.decoded_fields.add(Decoder.decodedDate(line));
+                    break;
+                case 'C':
+                    this.decoded_fields.add(Decoder.decodedRunway(line));
+                    break;
+                case 'D':
+                    this.decoded_fields.add(Decoder.decodedCoveredRunwayLength(line));
+                    break;
+                case 'F':
+                    this.decoded_fields.add(Decoder.decodedRunwayConditions(line));
+                    break;
+                case 'G':
+                    this.decoded_fields.add(Decoder.decodedMeanDepth(line));
+                    break;
+                case 'H':
+                    this.decoded_fields.add(Decoder.decodedFriction(line));
+                    break;
+                case 'N':
+
+                    break;
             }
 
-            if(rawLine.contains("B) ")) {
-                this.decoded_fields.add( Decoder.decodedDate(rawLine.split("B\\) ")[1].substring(0, 8)));
-            }
+            prevLine = rawLine;
+        }
+    }
 
-            if(rawLine.contains("C) ")) {
-                this.decoded_fields.add(Decoder.decodeRunaway(rawLine.split("C\\) ")[1].substring(0, 2)));
-            }
+    private String cleanStr(String rawLine) {
+        return rawLine.length() < 2 ? "" : rawLine.substring(0, rawLine.length()-2).trim();
+    }
 
-            if(rawLine.contains("D) ")) {
-                this.decoded_fields.add(Decoder.decodeCoveredRunwayLength(Decoder.decodedDate(rawLine.split("D\\) ")[1])));
-            }
+    private char lastCharofStr(String string) {
+       return string.length() <1 ? '0' : string.charAt(string.length()-1);
+    }
 
-            if(rawLine.contains("F) ")) {
-                this.decoded_fields.add(Decoder.decodeRunwayConditions(rawLine.split("F\\) ")[1].substring(0, 5)));
-            }
+    private static class NoSnowTam extends SnowTam{
+
+        protected NoSnowTam() {
+            super("");
+        }
+
+        @Override
+        public String getDecodedInfo() {
+            return "Cannot access to website";
         }
     }
 }
