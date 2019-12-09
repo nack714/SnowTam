@@ -26,6 +26,10 @@ public class SnowTam {
         this.decode();
     }
 
+    public String getOaci(){
+        return oaci;
+    }
+
     @Override
     public String toString() {
         String s = "SnowTam :{\n";

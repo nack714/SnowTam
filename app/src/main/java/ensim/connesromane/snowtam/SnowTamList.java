@@ -34,19 +34,42 @@ public class SnowTamList
             java.net.URL website = new URL(URL + oacis);
 
             InputStream in = website.openStream();
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
             Log.e("try", "after");
+            Boolean[] find = new Boolean[listOACI.length];
+            for(int i=0;i<find.length;i++){
+                find[i] = false;
+            }
 
-            for(int i=0;i<listOACI.length;i++) {
 
                 String line;
                 while((line = reader.readLine()) != null) {
 
-                    if(line.contains("\"all\":") && line.contains("SNOWTAM")) {
-                        String rawData = line.split("\"all\":")[1];
-                        snowTams.add(new SnowTam(listOACI[i], rawData.replaceAll("\\\\n", " ")));
+                    for (int i = 0; i < listOACI.length; i++) {
+
+                        if (!find[i] && line.contains("\"all\":") && line.contains("SNOWTAM") && line.contains(listOACI[i])) {
+                            Log.w("Nico i",i+"");
+                            Log.w("Nico Contains : ", listOACI[i] + " : ");
+                            Log.w("Nico line", line);
+                            find[i] = true;
+                            String rawData = line.split("\"all\":")[1];
+                            snowTams.add(new SnowTam(listOACI[i], rawData.replaceAll("\\\\n", " ")));
+                            break;
+                        }
                     }
+                }
+
+
+            Log.w("Nico break", "\n\n\n");
+            for(int i=0;i<find.length;i++) {
+
+                Log.w("Nico look for", i+" ( "+find[i]+" )");
+                if (!find[i]) {
+
+                    Log.w("Nico put noSnowTam on",i+" ( "+listOACI[i]+" )");
+                    snowTams.add(new SnowTam.NoSnowTam(listOACI[i]));
                 }
             }
         }
@@ -61,6 +84,16 @@ public class SnowTamList
     }
 
     public List<SnowTam> getList() {
+
         return this.snowTams;
+    }
+
+    public SnowTam searchByOACI(String oaci){
+        for (SnowTam st : snowTams){
+            if(oaci!=null && oaci.equals(st.getOaci())){
+                return st;
+            }
+        }
+        return null;
     }
 }

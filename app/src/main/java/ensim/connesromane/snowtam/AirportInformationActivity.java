@@ -70,19 +70,19 @@ public class AirportInformationActivity extends AppCompatActivity {
 
         rl2.setOnTouchListener(new OnSwipeTouchListener(AirportInformationActivity.this) {
             public void onSwipeTop() {
-                Toast.makeText(AirportInformationActivity.this, "top", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AirportInformationActivity.this, "top", Toast.LENGTH_SHORT).show();
             }
             public void onSwipeRight() {
-                Toast.makeText(AirportInformationActivity.this, "right", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AirportInformationActivity.this, "right", Toast.LENGTH_SHORT).show();
                 decrementIndex(airportName, airportData);
             }
             public void onSwipeLeft() {
-                Toast.makeText(AirportInformationActivity.this, "left", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AirportInformationActivity.this, "left", Toast.LENGTH_SHORT).show();
                 incrementIndex(airportName, airportData);
 
             }
             public void onSwipeBottom() {
-                Toast.makeText(AirportInformationActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AirportInformationActivity.this, "bottom", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -138,7 +138,7 @@ public class AirportInformationActivity extends AppCompatActivity {
     private void updateTextViews(TextView name, TextView data){
 
         Airport port = this.airportList.getList().get(index);
-        SnowTam snowTam = this.snowTamList.getList().get(index);
+        SnowTam snowTam = this.snowTamList.searchByOACI(port.getCode_OACI());
         name.setText(port.getNom());
         data.setText(snowTam.getDecodedInfo());
 
