@@ -118,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         airportList.addAirport(new Airport("ESTA", "AGH", "Aéroport d'Ängelholm–Helsingborg","56.287315", "12.868031"));
         airportList.addAirport(new Airport("ENGM", "OSL", "Aéroport international d'Oslo-Gardermoen","60.197550", "11.100415"));
 
+
+        airportList.addAirport(new Airport("ENBO", "BOO", "Aéroport de Bodø", "67.268310", "14.362237"));
+
     }
 
 

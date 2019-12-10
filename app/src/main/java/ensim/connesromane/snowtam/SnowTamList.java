@@ -15,22 +15,26 @@ import java.util.List;
 public class SnowTamList
 {
     private static final String CLE_DE_FLORIAN = "c7fbfa50-1027-11ea-8814-bd9683aba036";
-    //NE pas UTILISER //private static final String CLE_DE_NICOLAS = "0661e7b0-1027-11ea-8814-bd9683aba036";
-    // private static final String PERSO$UNIV = "http://perso.univ-lemans.fr/~i152300/snowtam";
-    private static final String URL = "https://v4p4sz5ijk.execute-api.us-east-1.amazonaws.com/anbdata/states/notams/notams-realtime-list?api_key="+CLE_DE_FLORIAN+"&format=json&criticality=&locations=";//ENGM, BGGH
+    private static final String CLE_DE_NICOLAS = "0661e7b0-1027-11ea-8814-bd9683aba036";
+    private static final String PERSO$UNIV = "http://perso.univ-lemans.fr/~i152300/snowtam";
+    private static final String URL = "https://v4p4sz5ijk.execute-api.us-east-1.amazonaws.com/anbdata/states/notams/notams-realtime-list?api_key="+CLE_DE_NICOLAS+"&format=json&criticality=&locations=";//ENGM, BGGH
 
+    private boolean api = true;
     private List<SnowTam> snowTams = new ArrayList<>();
 
     public SnowTamList(String oacis){
-
         StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(threadPolicy);
 
         String[] listOACI = oacis.split(",");
 
         try {
-            java.net.URL website = new URL(URL + oacis);
-
+            java.net.URL website;
+            if(!api){
+                website = new URL(PERSO$UNIV); //TODO  +oacis);
+            }else {
+                website = new URL(URL +oacis);
+            }
             InputStream in = website.openStream();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -80,6 +84,6 @@ public class SnowTamList
                 return st;
             }
         }
-        return null;
+        return new SnowTam.NoSnowTam(oaci);
     }
 }
