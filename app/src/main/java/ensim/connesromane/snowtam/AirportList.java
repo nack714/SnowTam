@@ -1,14 +1,6 @@
 package ensim.connesromane.snowtam;
 
-import android.util.Log;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class AirportList {
 
@@ -66,26 +58,19 @@ public class AirportList {
     }
 
     public AirportList searchById(String str){
-        Log.w("String init searchById", str);
+
         String[] listStr = str.split(";");
         ArrayList<Integer> listInt = new ArrayList<>();
         for(int i=0 ; i<listStr.length ; i++ ){
             listInt.add(Integer.parseInt(listStr[i]));
         }
+
         return searchById(listInt);
 
     }
 
     public ArrayList<Airport> getList() {
         return airportList;
-    }
-
-    public void putMarker(GoogleMap mMap){
-
-        for(Airport a : airportList){
-            LatLng marker = new LatLng(Float.parseFloat(a.getLat()), Float.parseFloat(a.getLon()));
-            mMap.addMarker(new MarkerOptions().position(marker).title(a.getTitle()));
-        }
     }
 
     public String getId() {
@@ -126,7 +111,6 @@ public class AirportList {
         return str;
 
     }
-
 
     public int size(){
         return airportList.size();

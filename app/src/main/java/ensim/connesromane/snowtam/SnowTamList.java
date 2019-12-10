@@ -47,9 +47,6 @@ public class SnowTamList
                     for (int i = 0; i < listOACI.length; i++) {
 
                         if (!find[i] && line.contains("\"all\":") && line.contains("SNOWTAM") && line.contains(listOACI[i])) {
-                            Log.w("Nico i",i+"");
-                            Log.w("Nico Contains : ", listOACI[i] + " : ");
-                            Log.w("Nico line", line);
                             find[i] = true;
                             String rawData = line.split("\"all\":")[1];
                             snowTams.add(new SnowTam(listOACI[i], rawData.replaceAll("\\\\n", " ")));
@@ -59,13 +56,10 @@ public class SnowTamList
                 }
 
 
-            Log.w("Nico break", "\n\n\n");
             for(int i=0;i<find.length;i++) {
 
-                Log.w("Nico look for", i+" ( "+find[i]+" )");
                 if (!find[i]) {
 
-                    Log.w("Nico put noSnowTam on",i+" ( "+listOACI[i]+" )");
                     snowTams.add(new SnowTam.NoSnowTam(listOACI[i]));
                 }
             }
@@ -78,11 +72,6 @@ public class SnowTamList
             e.printStackTrace();
             Log.e("SnowTamList", "IOException");
         }
-    }
-
-    public List<SnowTam> getList() {
-
-        return this.snowTams;
     }
 
     public SnowTam searchByOACI(String oaci){

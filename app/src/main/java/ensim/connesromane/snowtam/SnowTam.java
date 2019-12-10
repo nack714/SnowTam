@@ -85,7 +85,7 @@ public class SnowTam {
        return string.length() <1 ? '0' : string.charAt(string.length()-1);
     }
 
-    public static class NoSnowTam extends SnowTam{
+    public static class NoSnowTam extends SnowTam {
 
         protected NoSnowTam(String oaci) {
             super(oaci,"");

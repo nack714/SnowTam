@@ -22,48 +22,24 @@ public class Airport {
         return code_IATA;
     }
 
-    public void setCode_IATA(String code_IATA) {
-        this.code_IATA = code_IATA;
-    }
-
     public String getCode_OACI() {
         return code_OACI;
-    }
-
-    public void setCode_OACI(String code_OACI) {
-        this.code_OACI = code_OACI;
     }
 
     public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public String getLat() {
         return lat;
-    }
-
-    public void setLat(String lat) {
-        this.lat = lat;
     }
 
     public String getLon() {
         return lon;
     }
 
-    public void setLon(String lon) {
-        this.lon = lon;
-    }
-
     public boolean isActive() {
         return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 
     public boolean isId(int id) {

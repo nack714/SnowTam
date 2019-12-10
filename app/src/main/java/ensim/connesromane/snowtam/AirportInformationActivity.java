@@ -3,7 +3,6 @@ package ensim.connesromane.snowtam;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -129,8 +128,6 @@ public class AirportInformationActivity extends AppCompatActivity {
         if(rawAirports != null) {
             this.airportList = MainActivity.airportList.searchById(rawAirports);
         }
-
-        Log.e("airportlist : ", this.airportList.toString());
     }
 
     private void incrementIndex(TextView name, TextView data){
@@ -155,7 +152,6 @@ public class AirportInformationActivity extends AppCompatActivity {
         }
 
         this.indicators.get(index).setChecked(true);
-        Log.w("Nico airport : ",port.toString());
         map.setAirport(port);
     }
 

@@ -2,24 +2,16 @@ package ensim.connesromane.snowtam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.LauncherActivity;
-import android.app.SearchableInfo;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckedTextView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ListView listView;
@@ -37,24 +29,20 @@ public class MainActivity extends AppCompatActivity {
 //SearchView
         SearchView searchView = (SearchView) findViewById(R.id.searchView);
 
-        CharSequence query = searchView.getQuery(); // get the query string currently in the text field
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.w("Search submit : ", query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 if(newText.length()>0) {
-                    Log.w("Search tap : ", newText);
                     AirportList searchList = airportList.search(newText);
-                    arrayAdapterVisible = new ArrayAdapter<Airport>(MainActivity.this, android.R.layout.simple_list_item_1 , searchList.getList());
+                    arrayAdapterVisible = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1 , searchList.getList());
 
                     listView.setAdapter(arrayAdapterVisible);
                 }else{
-                    Log.w("Search tap : ", "empty");
                     arrayAdapterVisible = arrayAdapterFull;
 
                     listView.setAdapter(arrayAdapterVisible);
@@ -84,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //ListView
-        arrayAdapterFull = new ArrayAdapter<Airport>(this, android.R.layout.simple_list_item_1 , airportList.getList());
+        arrayAdapterFull = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1 , airportList.getList());
         arrayAdapterVisible = arrayAdapterFull;
         listView = (ListView)findViewById(R.id.listView);
         listView.setAdapter(arrayAdapterVisible);
