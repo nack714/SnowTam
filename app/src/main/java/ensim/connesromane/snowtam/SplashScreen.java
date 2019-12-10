@@ -32,7 +32,7 @@ public class SplashScreen extends AppCompatActivity {
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
      */
-    private static final int UI_ANIMATION_DELAY = 300;
+    private static final int UI_ANIMATION_DELAY = AUTO_HIDE_DELAY_MILLIS;//300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
@@ -118,7 +118,7 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 300);
+        }, AUTO_HIDE_DELAY_MILLIS);//300);
 
 
 
