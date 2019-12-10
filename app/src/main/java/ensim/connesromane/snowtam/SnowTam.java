@@ -34,14 +34,6 @@ public class SnowTam {
 
     @Override
     public String toString() {
-        /*
-        String s = "SnowTam :{\n";
-
-        for (String string : this.raw_fields) {
-            s += string + "\n";
-        }
-
-        return s += "\n}";*/
         return  this.allRawFields;
     }
 
@@ -56,10 +48,6 @@ public class SnowTam {
     }
 
     private void decode() {
-
-        /**
-         * TODO : elements = str.split(i+"\\) ") avec i allant de A à Z
-         */
 
         String prevLine = "";
 
