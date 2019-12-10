@@ -7,12 +7,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,9 +22,6 @@ import java.util.List;
 
 
 public class AirportInformationActivity extends AppCompatActivity {
-
-    private Airport airport;
-
 
     AirportList airportList;
     SnowTamList snowTamList;
@@ -42,12 +36,9 @@ public class AirportInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ariport_info);
 
-        Intent intent = this.getIntent();
-
         this.initAirports();
-        airport = airportList.getList().get(0);
+        Airport airport = airportList.getList().get(0);
 
-        //this.initSnowtams();
         this.snowTamList = new SnowTamList(airportList.getOACI());
 
         map = new MapViewFragment(airport);
@@ -72,23 +63,7 @@ public class AirportInformationActivity extends AppCompatActivity {
 
         final TextView airportName = this.findViewById(R.id.text_frag1);
         final TextView airportData = this.findViewById(R.id.text_frag2);
-/*
-        airportData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(decode[index]){
-                    //snowTam.getDecodedInfo()
-                    decode[index] = false;
 
-                    airportData.setText("Co\n non");
-                    airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).getDecodedInfo());
-                }else {
-                    decode[index] = true;
-                    airportData.setText(snowTamList.searchByOACI(airportList.getList().get(index).getCode_OACI()).toString());
-                }
-            }
-        });
-*/
         airportData.setOnTouchListener(new OnSwipeTouchListener(AirportInformationActivity.this) {
             public void onSwipeTop() {
                 //Toast.makeText(AirportInformationActivity.this, "top", Toast.LENGTH_SHORT).show();
@@ -142,10 +117,6 @@ public class AirportInformationActivity extends AppCompatActivity {
             public void onSwipeBottom() {
                 //Toast.makeText(AirportInformationActivity.this, "bottom", Toast.LENGTH_SHORT).show();
             }
-
-            public void onClick(){
-                Toast.makeText(AirportInformationActivity.this, "click", Toast.LENGTH_SHORT).show();
-            }
         });
 
     }
@@ -160,11 +131,6 @@ public class AirportInformationActivity extends AppCompatActivity {
         }
 
         Log.e("airportlist : ", this.airportList.toString());
-    }
-
-    private void initSnowtams() {
-
-        this.snowTamList = new SnowTamList(airportList.getOACI());
     }
 
     private void incrementIndex(TextView name, TextView data){
@@ -205,6 +171,4 @@ public class AirportInformationActivity extends AppCompatActivity {
             layout.addView(radio);
         }
     }
-
-
 }

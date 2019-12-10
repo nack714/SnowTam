@@ -1,19 +1,9 @@
 package ensim.connesromane.snowtam;
 
-import android.os.StrictMode;
-import android.util.Log;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SnowTam {
-
 
     protected String oaci;
     private String[] raw_fields;
@@ -55,7 +45,7 @@ public class SnowTam {
 
             String line = this.cleanStr(rawLine);
 
-            switch(this.lastCharofStr(prevLine)){
+            switch(this.lastCharOfStr(prevLine)){
 
                 default:
                     //Log.e("Parsing snowtam error", "Section " + this.lastCharofStr(prevLine) + " :  prevLine is \"" + prevLine +"\"");
@@ -91,7 +81,7 @@ public class SnowTam {
         return rawLine.length() < 2 ? "" : rawLine.substring(0, rawLine.length()-2).trim();
     }
 
-    private char lastCharofStr(String string) {
+    private char lastCharOfStr(String string) {
        return string.length() <1 ? '0' : string.charAt(string.length()-1);
     }
 
@@ -108,7 +98,7 @@ public class SnowTam {
 
         @Override
         public String getDecodedInfo() {
-            return this.oaci + "\nNo snowtam aviable.";
+            return this.oaci + "\nNo snowtam available.";
         }
     }
 }

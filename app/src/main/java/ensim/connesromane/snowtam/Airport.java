@@ -6,7 +6,6 @@ public class Airport {
     private boolean active;
     private int id;
     private String lat, lon;
-    private SnowTam snowTam;
 
     public Airport(String code_OACI, String code_IATA, String nom, String lat, String lon)  {
         this.id = compt_id++;
@@ -98,13 +97,5 @@ public class Airport {
 
     public int getId() {
         return  id;
-    }
-
-    public SnowTam getSnowTam() {
-        return this.snowTam;
-    }
-
-    public void setSnowTam(SnowTam snowTam) {
-        this.snowTam = snowTam;
     }
 }
